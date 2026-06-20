@@ -45,16 +45,16 @@ jobs:
         run: |
           docker build \
             -f deployment/Dockerfile.dev \
-            -t ghcr.io/zawthanoo/payment-service:${{ steps.tag-version.outputs.version }} \
+            -t ghcr.io/zinkoko-dev/payment-service:${{ steps.tag-version.outputs.version }} \
             .
 
       - name: Push Docker Image
-        run: docker push ghcr.io/zawthanoo/payment-service:${{ steps.tag-version.outputs.version }}
+        run: docker push ghcr.io/zinkoko-dev/payment-service:${{ steps.tag-version.outputs.version }}
 
       - name: Checkout Kustomize chart Repository
         uses: actions/checkout@v4
         with:
-          repository: zawthanoo/workshop-apps
+          repository: zinkoko-dev/workshop-apps
           path: deployment
           token: ${{ secrets.MY_GITHUB_TOKEN }}
 
